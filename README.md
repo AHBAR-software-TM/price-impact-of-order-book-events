@@ -54,11 +54,25 @@ $$\Delta P_k = \alpha_{Q,i} + \beta_{Q,i} \cdot \text{OFI}_k + \gamma_{Q,i} \cdo
 ```bash
 pip install pandas numpy statsmodels scipy matplotlib parquet pyarrow
 ```
+### 2. Repository Structure
+The repository is organized with the master analytical notebook, the comprehensive project report, and the raw datasets compressed into multi-part archives.
 
-### 2. Folder Structure and input files
-## 📂 Directory & Folder Structure
+```text
+.
+├── Full Report.pdf                        # Detailed academic project report and empirical findings
+├── README.md                              # Project documentation and setup instructions
+├── price_impact_order_book_events.ipynb   # Master replication & cross-market analysis notebook
+│
+├── filtered_nbbo_data.part1.rar           # U.S. Equity (AAPL, AMZN) NBBO quote stream (Part 1 of 2)
+├── filtered_nbbo_data.part2.rar           # U.S. Equity (AAPL, AMZN) NBBO quote stream (Part 2 of 2)
+│
+├── raw.part1.rar                          # Crypto perpetuals quote & trade datasets (Part 1 of 2)
+└── raw.part2.rar                          # Crypto perpetuals quote & trade datasets (Part 2 of 2)
+```
+### 3. Project Folder Structure and input files
 
-After running config cells inside notebook, following Directory will be ready to use.
+
+After running config cells inside notebook, following Directory Scheme will be ready to use.
 To easily run codes afterwards, put extracted raw files in "raw" folder.
 
 ```text
