@@ -39,18 +39,55 @@ $$\Delta P_k = \alpha_i + \beta_i \cdot \text{OFI}_k + \epsilon_k$$
 *(Models are estimated via OLS using **White HC0** heteroskedasticity-robust standard errors).*
 
 ### 3. Price Impact vs. Market Depth Elasticity ($\lambda$)
-Tests power-law decay of price impact slope $\beta_i$ relative to average depth $\bar{D}_i$:
-$$\log(\beta_i) = \alpha_{L,i} - \lambda \log(\bar{D}_i) + \epsilon_{L,i}$$
+Tests power-law decay of price impact slope $$\beta_i$$ relative to average depth $$\bar{D}\_i$$:
+$$\log(\beta_i) = \alpha_{L,i} - \lambda \log(\bar{D}\_i) + \epsilon\_{L,i}$$
 
 ### 4. Non-Linear Price Impact Test
 $$\Delta P_k = \alpha_{Q,i} + \beta_{Q,i} \cdot \text{OFI}_k + \gamma_{Q,i} \cdot \text{OFI}_k |\text{OFI}_k | + \epsilon_{Q,k}$$
 
 ---
 
+
 ## 🚀 Quickstart & Execution Sequence
 
 ### 1. Prerequisites & Setup
 ```bash
-git clone [https://github.com/YOUR_USERNAME/price-impact-order-book-events.git](https://github.com/YOUR_USERNAME/price-impact-order-book-events.git)
-cd price-impact-order-book-events
 pip install pandas numpy statsmodels scipy matplotlib parquet pyarrow
+```
+
+### 2. Folder Structure and input files
+## 📂 Directory & Folder Structure
+
+After running config cells inside notebook, following Directory will be ready to use.
+To easily run codes afterwards, put extracted raw files in "raw" folder.
+
+```text
+.
+├── price_impact_order_book_events.ipynb   # Master replication & cross-market analysis notebook
+│
+├── data/
+│   ├── raw/                                # Compressed raw top-of-book crypto quote streams (.csv.gz)
+│   │   ├── BTC/
+│   │   ├── ETH/
+│   │   ├── SOL/
+│   │   ├── HYPE/
+│   │   └── DOGE/
+│   ├── raw_trades/                         # Compressed raw crypto trade streams (.csv.gz)
+│   │   ├── BTC/
+│   │   ├── ETH/
+│   │   ├── SOL/
+│   │   ├── HYPE/
+│   │   └── DOGE/
+│   ├── raw_stocks/                         # Filtered stock NBBO data
+│   │   └── filtered_nbbo_data.csv          # Uncompressed stock quote file (~2.7M rows)
+│   ├── processed/                          # 10s aggregated Parquet/CSV files for crypto assets
+│   └── processed_stocks/                   # 10s aggregated CSV files for AAPL and AMZN
+│
+└── results/                                # Generated output tables, regression figures, and CSV summaries
+    ├── BTC/
+    ├── ETH/
+    ├── SOL/
+    ├── HYPE/
+    ├── DOGE/
+    ├── stocks/                             # Stock-specific regression tables and intraday plots
+    └── market_comparison/                  # Cross-market synthesis plots and final summary CSVs
