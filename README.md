@@ -43,25 +43,7 @@ Tests power-law decay of price impact slope $\beta_i$ relative to average depth 
 $$\log(\beta_i) = \alpha_{L,i} - \lambda \log(\bar{D}_i) + \epsilon_{L,i}$$
 
 ### 4. Non-Linear Price Impact Test
-$$\Delta P_k = \alpha_{Q,i} + \beta_{Q,i} \cdot \text{OFI}_k + \gamma_{Q,i} \cdot \text{OFI}_k |\text{OFI}_k| + \epsilon_{Q,k}$$
-
----
-
-## 🛠️ Repository Pipeline & Architecture
-
-The codebase separates **Data Preparation** (cleaning, event-decoding, gap-handling, 10s binning) from **Empirical Analysis** (OLS regressions, depth scaling, intraday plots):
-
-| Script | Function |
-| :--- | :--- |
-| `config.py` | Global settings, dates, tokens, and path definitions for Crypto datasets. |
-| `stock_config.py` | US Equity timezone, market hours, and symbol settings (AAPL, AMZN). |
-| `prepare_data.py` | Top-of-book filtering, tick size estimation, event-OFI calculation, and 10s aggregation for crypto quotes. |
-| `prepare_trades.py` | Ingests Tardis trade files, signs taker volume, and computes 10s Trade Imbalance ($TI$). |
-| `prepare_stock_data.py` | Decodes raw $HHMMSS + \text{nanoseconds}$ timestamps, filters US regular session, and calculates 10s stock OFI. |
-| `analyze.py` | Core linear/nonlinear regressions, residual kurtosis, depth scaling ($\lambda$), and figures for crypto. |
-| `analyze_section4.py` | Evaluates $OFI$ vs. $TI$, volume exponents ($H$), and $L$-trade horizon price impact. |
-| `analyze_stocks.py` | Intraday profile modeling, depth elasticity, and linear regressions for AAPL/AMZN. |
-| `compare_markets.py` | Cross-market summary table generation and visualization comparisons. |
+$$\Delta P_k = \alpha_{Q,i} + \beta_{Q,i} \cdot \text{OFI}_k + \gamma_{Q,i} \cdot \text{OFI}_k |\text{OFI}_k | + \epsilon_{Q,k}$$
 
 ---
 
